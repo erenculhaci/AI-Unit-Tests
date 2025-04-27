@@ -13,7 +13,7 @@ class TestGetOddCollatz(unittest.TestCase):
 
     def test_large_number(self):
         result = get_odd_collatz(19)
-        expected = [1, 5, 7, 11, 17, 19, 21, 31, 41, 47, 55, 61, 79]
+        expected = [1, 5, 11, 13, 17, 19, 29]
         self.assertEqual(result, expected)
 
     def test_invalid_input(self):
