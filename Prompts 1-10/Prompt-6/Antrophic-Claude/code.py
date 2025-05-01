@@ -1,3 +1,7 @@
+# @Authors
+# Student Names: Eren CULHACI, İrem TAZE, Kaan KARATAŞ
+# Student IDs: 150220763, 150200086, 150200081
+
 def get_odd_collatz(n):
     """
     Given a positive integer n, return a sorted list that has the odd numbers in collatz sequence.

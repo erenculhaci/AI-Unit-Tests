@@ -1,4 +1,6 @@
-# code.py
+# @Authors
+# Student Names: Eren CULHACI, İrem TAZE, Kaan KARATAŞ
+# Student IDs: 150220763, 150200086, 150200081
 
 def find_zero(xs: list):
     """ xs are coefficients of a polynomial from constant to higher degrees.

@@ -1,3 +1,7 @@
+# @Authors
+# Student Names: Eren CULHACI, İrem TAZE, Kaan KARATAŞ
+# Student IDs: 150220763, 150200086, 150200081
+
 def find_zero(xs: list):
     """ xs are coefficients of a polynomial.
     find_zero find x such that poly(x) = 0.

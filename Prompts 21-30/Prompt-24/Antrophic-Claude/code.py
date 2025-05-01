@@ -1,3 +1,7 @@
+# @Authors
+# Student Names: Eren CULHACI, İrem TAZE, Kaan KARATAŞ
+# Student IDs: 150220763, 150200086, 150200081
+
 def valid_date(date):
     """
     Validates if the given date string is in the correct format (mm-dd-yyyy)

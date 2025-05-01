@@ -1,3 +1,7 @@
+# @Authors
+# Student Names: Eren CULHACI, İrem TAZE, Kaan KARATAŞ
+# Student IDs: 150220763, 150200086, 150200081
+
 def even_odd_palindrome(n):
     """
     Given a positive integer n, return a tuple that has the number of even and odd

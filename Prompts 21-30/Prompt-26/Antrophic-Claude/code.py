@@ -1,3 +1,7 @@
+# @Authors
+# Student Names: Eren CULHACI, İrem TAZE, Kaan KARATAŞ
+# Student IDs: 150220763, 150200086, 150200081
+
 def reverse_delete(s, c):
     """
     Delete all characters in s that match any character in c, 

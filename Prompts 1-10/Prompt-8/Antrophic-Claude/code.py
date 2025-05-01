@@ -1,3 +1,7 @@
+# @Authors
+# Student Names: Eren CULHACI, İrem TAZE, Kaan KARATAŞ
+# Student IDs: 150220763, 150200086, 150200081
+
 def eat(number, need, remaining):
     """
     You're a hungry rabbit, and you already have eaten a certain number of carrots, 

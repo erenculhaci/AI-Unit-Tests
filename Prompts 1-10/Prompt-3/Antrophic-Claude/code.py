@@ -1,3 +1,7 @@
+# @Authors
+# Student Names: Eren CULHACI, İrem TAZE, Kaan KARATAŞ
+# Student IDs: 150220763, 150200086, 150200081
+
 def minPath(grid, k):
     """
     Find the minimum path of length k in the grid, where minimum path is the one

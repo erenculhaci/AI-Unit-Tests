@@ -1,3 +1,7 @@
+# @Authors
+# Student Names: Eren CULHACI, İrem TAZE, Kaan KARATAŞ
+# Student IDs: 150220763, 150200086, 150200081
+
 def valid_date(date):
     if not date or len(date) != 10 or date[2] != '-' or date[5] != '-':
         return False

@@ -1,3 +1,7 @@
+# @Authors
+# Student Names: Eren CULHACI, İrem TAZE, Kaan KARATAŞ
+# Student IDs: 150220763, 150200086, 150200081
+
 def numerical_letter_grade(grades):
     """It is the last week of the semester and the teacher has to give the grades
     to students. The teacher has been making her own algorithm for grading.

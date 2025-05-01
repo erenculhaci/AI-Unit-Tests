@@ -1,3 +1,7 @@
+# @Authors
+# Student Names: Eren CULHACI, İrem TAZE, Kaan KARATAŞ
+# Student IDs: 150220763, 150200086, 150200081
+
 def get_closest_vowel(word):
     """
     Find the closest vowel that stands between two consonants from the right side of the word.

@@ -1,3 +1,7 @@
+# @Authors
+# Student Names: Eren CULHACI, İrem TAZE, Kaan KARATAŞ
+# Student IDs: 150220763, 150200086, 150200081
+
 def get_odd_collatz(n):
     if n <= 0:
         raise ValueError("Input must be a positive integer.")

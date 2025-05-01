@@ -1,3 +1,7 @@
+# @Authors
+# Student Names: Eren CULHACI, İrem TAZE, Kaan KARATAŞ
+# Student IDs: 150220763, 150200086, 150200081
+
 def Strongest_Extension(class_name, extensions):
     """
     Finds the strongest extension for a class based on the given strength criteria.

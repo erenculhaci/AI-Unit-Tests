@@ -1,3 +1,7 @@
+# @Authors
+# Student Names: Eren CULHACI, İrem TAZE, Kaan KARATAŞ
+# Student IDs: 150220763, 150200086, 150200081
+
 def pluck(arr):
     even_nodes = [(val, idx) for idx, val in enumerate(arr) if val % 2 == 0]
     if not even_nodes:
