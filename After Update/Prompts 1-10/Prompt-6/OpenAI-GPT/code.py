@@ -3,16 +3,22 @@
 # Student IDs: 150220763, 150200086, 150200081
 
 def get_odd_collatz(n):
+    if not isinstance(n, int):
+        raise TypeError("Input must be an integer")
     if n <= 0:
-        raise ValueError("Input must be a positive integer.")
+        raise ValueError("Input must be a positive integer")
 
-    sequence = []
+    odds = set()
     while n != 1:
         if n % 2 == 1:
-            sequence.append(n)
+            odds.add(n)
         if n % 2 == 0:
             n = n // 2
         else:
             n = 3 * n + 1
-    sequence.append(1)  # Ensure 1 is included
-    return sorted(sequence)
+
+    odds.add(1)
+
+    # Return sorted list with 1 first
+    return [1] + sorted(x for x in odds if x != 1)
+

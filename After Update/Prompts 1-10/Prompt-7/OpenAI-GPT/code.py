@@ -6,6 +6,10 @@ def numerical_letter_grade(grades):
     """Convert a list of GPAs to letter grades."""
     letter_grades = []
     for gpa in grades:
+        if not isinstance(gpa, (int, float)):
+            raise TypeError("All grades must be numeric.")
+        if gpa > 4.0 or gpa < 0.0:
+            raise ValueError("GPA value must be between 0.0 and 4.0.")
         if gpa == 4.0:
             letter_grades.append('A+')
         elif gpa > 3.7:
@@ -30,6 +34,7 @@ def numerical_letter_grade(grades):
             letter_grades.append('D')
         elif gpa > 0.0:
             letter_grades.append('D-')
-        else:  # gpa == 0.0
+        else:
             letter_grades.append('E')
     return letter_grades
+

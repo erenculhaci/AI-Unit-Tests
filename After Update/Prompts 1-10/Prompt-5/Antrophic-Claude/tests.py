@@ -1,38 +1,69 @@
-# @Authors
-# Student Names: Eren CULHACI, İrem TAZE, Kaan KARATAŞ
-# Student IDs: 150220763, 150200086, 150200081
-
 import unittest
 from code import even_odd_palindrome
 
 class TestEvenOddPalindrome(unittest.TestCase):
-    def test_small_input(self):
-        # Test with small input n = 3
-        self.assertEqual(even_odd_palindrome(3), (1, 2))
-    
-    def test_medium_input(self):
-        # Test with medium input n = 12
-        self.assertEqual(even_odd_palindrome(12), (4, 6))
-    
-    def test_large_input(self):
-        # Test with larger input n = 100
-        # Let's list all palindromes up to 100:
-        # Single digits: 1, 2, 3, 4, 5, 6, 7, 8, 9
-        # Double digits: 11, 22, 33, 44, 55, 66, 77, 88, 99
-        # Even palindromes: 2, 4, 6, 8, 22, 44, 66, 88 (8 total)
-        # Odd palindromes: 1, 3, 5, 7, 9, 11, 33, 55, 77, 99 (10 total)
-        self.assertEqual(even_odd_palindrome(100), (8, 10))
-    
-    def test_single_input(self):
-        # Test with input n = 1
-        self.assertEqual(even_odd_palindrome(1), (0, 1))
-    
-    def test_edge_case(self):
-        # Test with input n = 22
-        # Palindromes: 1-9, 11, 22
-        # Even palindromes: 2, 4, 6, 8, 22 (5 total)
-        # Odd palindromes: 1, 3, 5, 7, 9, 11 (6 total)
-        self.assertEqual(even_odd_palindrome(22), (5, 6))
 
-if __name__ == "__main__":
+    def test_zero_input(self):
+        self.assertEqual(even_odd_palindrome(0), (0, 0))
+
+    def test_lower_bound(self):
+        self.assertEqual(even_odd_palindrome(1), (0, 1))
+
+    def test_two(self):
+        self.assertEqual(even_odd_palindrome(2), (1, 1))
+
+    def test_upper_bound(self):
+        even, odd = even_odd_palindrome(1000)
+        self.assertEqual(even + odd, 108)  
+
+    def test_example_1(self):
+        self.assertEqual(even_odd_palindrome(3), (1, 2))
+
+    def test_example_2(self):
+        self.assertEqual(even_odd_palindrome(12), (4, 6))
+
+    def test_medium_number(self):
+        self.assertEqual(even_odd_palindrome(50), (6, 7)) 
+
+    def test_double_digit_limit(self):
+        self.assertEqual(even_odd_palindrome(99), (8, 10)) 
+
+    def test_palindromes_up_to_101(self):
+        self.assertEqual(even_odd_palindrome(101), (8, 11))  
+
+    def test_non_palindromic_range(self):
+        self.assertEqual(even_odd_palindrome(10), (4, 5))  
+
+    def test_large_input(self):
+        self.assertEqual(even_odd_palindrome(1000), (48, 60)) 
+
+    def test_negative_input(self):
+        with self.assertRaises(ValueError):
+            even_odd_palindrome(-5)
+
+    def test_float_input(self):
+        with self.assertRaises(TypeError):
+            even_odd_palindrome(10.5)
+
+    def test_string_input(self):
+        with self.assertRaises(TypeError):
+            even_odd_palindrome("100")
+
+    def test_none_input(self):
+        with self.assertRaises(TypeError):
+            even_odd_palindrome(None)
+
+    def test_list_input(self):
+        with self.assertRaises(TypeError):
+            even_odd_palindrome([1, 2, 3])
+
+    def test_boolean_input(self):
+        with self.assertRaises(TypeError):
+            even_odd_palindrome(True)
+
+    def test_dictionary_input(self):
+        with self.assertRaises(TypeError):
+            even_odd_palindrome({"n": 10})
+
+if __name__ == '__main__':
     unittest.main()

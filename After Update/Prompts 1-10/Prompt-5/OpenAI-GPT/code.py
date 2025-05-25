@@ -3,10 +3,11 @@
 # Student IDs: 150220763, 150200086, 150200081
 
 def even_odd_palindrome(n):
-    """
-    Given a positive integer n, return a tuple that has the number of even and odd
-    integer palindromes that fall within the range(1, n), inclusive.
-    """
+    if not isinstance(n, int) or isinstance(n, bool):
+        raise TypeError("Input must be an integer (not boolean).")
+    if n < 0:
+        raise ValueError("Input must be a non-negative integer.")
+
     even_count = 0
     odd_count = 0
     for i in range(1, n + 1):
@@ -16,3 +17,4 @@ def even_odd_palindrome(n):
             else:
                 odd_count += 1
     return (even_count, odd_count)
+
