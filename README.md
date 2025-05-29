@@ -103,7 +103,7 @@ Remember you need to tweak the scripts a little in order to run the code on your
 (e.g. You may need to change the Prompt folder path or range in this script.)
 ```
 
-You will see the output from `unittest`, displaying passed/failed tests.
+You will see the output in the root folder of the project in seperate folders. These folders include coverage reports for the codes and tests.
 
 ---
 
