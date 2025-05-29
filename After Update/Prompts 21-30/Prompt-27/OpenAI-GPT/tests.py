@@ -5,79 +5,117 @@
 import unittest
 from code import get_closest_vowel
 
+
 class TestGetClosestVowel(unittest.TestCase):
 
-    # --- Original Functional Tests ---
-    def test_example1(self):
+    # --- Valid Functional Tests ---
+    def test_example_1(self):
         self.assertEqual(get_closest_vowel("yogurt"), "u")
 
-    def test_example2(self):
+    def test_example_2(self):
         self.assertEqual(get_closest_vowel("FULL"), "U")
 
-    def test_example3(self):
+    def test_example_3(self):
         self.assertEqual(get_closest_vowel("quick"), "")
 
-    def test_short_word(self):
+    def test_example_4(self):
         self.assertEqual(get_closest_vowel("ab"), "")
 
-    def test_multiple_candidates(self):
-        self.assertEqual(get_closest_vowel("crater"), "e")
+    def test_multiple_vowels(self):
+        self.assertEqual(get_closest_vowel("computer"), "e")
 
-    def test_consonant_edges(self):
-        self.assertEqual(get_closest_vowel("plant"), "a")
+    def test_vowel_at_beginning(self):
+        self.assertEqual(get_closest_vowel("apple"), "")
 
-    def test_no_vowel_between_consonants(self):
-        self.assertEqual(get_closest_vowel("sky"), "")
+    def test_vowel_at_end(self):
+        self.assertEqual(get_closest_vowel("taco"), "a")
 
-    # --- Additional Functional Tests ---
-    def test_uppercase_priority(self):
-        self.assertEqual(get_closest_vowel("TRYING"), "I")
+    def test_no_vowels(self):
+        self.assertEqual(get_closest_vowel("rhythm"), "")
 
-    def test_start_and_end_vowels_excluded(self):
-        self.assertEqual(get_closest_vowel("angle"), "")  # 'a' and 'e' shouldn't count
+    def test_case_sensitivity(self):
+        self.assertEqual(get_closest_vowel("TeXt"), "e")
 
-    def test_multiple_vowels_between_consonants(self):
-        self.assertEqual(get_closest_vowel("contraption"), "i")
+    def test_single_character(self):
+        self.assertEqual(get_closest_vowel("a"), "")
+        self.assertEqual(get_closest_vowel("b"), "")
 
-    def test_last_valid_case(self):
-        self.assertEqual(get_closest_vowel("scooter"), "e")
+    def test_two_characters(self):
+        self.assertEqual(get_closest_vowel("ab"), "")
+        self.assertEqual(get_closest_vowel("ae"), "")
 
-    def test_word_with_all_vowels(self):
-        self.assertEqual(get_closest_vowel("educational"), "a")
+    def test_three_characters_valid(self):
+        self.assertEqual(get_closest_vowel("bat"), "a")
+        self.assertEqual(get_closest_vowel("BET"), "E")
 
-    def test_closest_vowel_rightmost(self):
-        self.assertEqual(get_closest_vowel("blockup"), "u")  # must pick 'u', not 'o'
+    def test_three_characters_invalid(self):
+        self.assertEqual(get_closest_vowel("aei"), "")
+        self.assertEqual(get_closest_vowel("xyz"), "")
 
-    def test_vowel_alone_in_center(self):
-        self.assertEqual(get_closest_vowel("bop"), "o")
+    def test_vowel_at_edges(self):
+        self.assertEqual(get_closest_vowel("elephant"), "a")
+        self.assertEqual(get_closest_vowel("orange"), "a")
 
     def test_all_vowels(self):
-        self.assertEqual(get_closest_vowel("aeiou"), "")  # no consonants around vowels
+        self.assertEqual(get_closest_vowel("aeiou"), "")
 
     def test_all_consonants(self):
-        self.assertEqual(get_closest_vowel("bcdfghjkl"), "")
+        self.assertEqual(get_closest_vowel("bcdfg"), "")
 
-    # --- Invalid Input Tests (Optional Robustness) ---
-    def test_empty_string(self):
-        self.assertEqual(get_closest_vowel(""), "")
+    def test_rightmost_vowel_priority(self):
+        self.assertEqual(get_closest_vowel("beautiful"), "u")
+        self.assertEqual(get_closest_vowel("education"), "a")
 
-    def test_one_letter(self):
-        self.assertEqual(get_closest_vowel("a"), "")
+    def test_mixed_case_complex(self):
+        self.assertEqual(get_closest_vowel("ExAmPlE"), "A")
+        self.assertEqual(get_closest_vowel("tEsT"), "E")
 
-    def test_two_letters(self):
-        self.assertEqual(get_closest_vowel("at"), "")
+    def test_long_words(self):
+        self.assertEqual(get_closest_vowel("programming"), "i")
+        self.assertEqual(get_closest_vowel("extraordinary"), "a")
 
-    def test_none_input(self):
-        with self.assertRaises(TypeError):
-            get_closest_vowel(None)
+    def test_consecutive_vowels(self):
+        self.assertEqual(get_closest_vowel("beautiful"), "u")
+        self.assertEqual(get_closest_vowel("queue"), "")
 
-    def test_integer_input(self):
+    # --- Invalid Input Tests ---
+    def test_non_string_input_integer(self):
         with self.assertRaises(TypeError):
             get_closest_vowel(123)
 
-    def test_list_input(self):
+    def test_non_string_input_list(self):
         with self.assertRaises(TypeError):
-            get_closest_vowel(['a', 'b', 'c'])
+            get_closest_vowel(["hello"])
 
-if __name__ == "__main__":
+    def test_non_string_input_none(self):
+        with self.assertRaises(TypeError):
+            get_closest_vowel(None)
+
+    def test_non_string_input_dict(self):
+        with self.assertRaises(TypeError):
+            get_closest_vowel({"word": "test"})
+
+    def test_non_string_input_boolean(self):
+        with self.assertRaises(TypeError):
+            get_closest_vowel(True)
+
+    def test_non_string_input_float(self):
+        with self.assertRaises(TypeError):
+            get_closest_vowel(3.14)
+
+    # --- Edge Cases ---
+    def test_empty_string(self):
+        self.assertEqual(get_closest_vowel(""), "")
+
+    def test_vowel_combinations(self):
+        self.assertEqual(get_closest_vowel("bAe"), "")
+        self.assertEqual(get_closest_vowel("cOd"), "O")
+        self.assertEqual(get_closest_vowel("pIg"), "I")
+
+    def test_pattern_validation(self):
+        self.assertEqual(get_closest_vowel("strength"), "e")
+        self.assertEqual(get_closest_vowel("system"), "e")
+
+
+if __name__ == '__main__':
     unittest.main()

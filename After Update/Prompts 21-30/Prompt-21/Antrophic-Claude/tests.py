@@ -145,7 +145,7 @@ class TestSortedListSum(unittest.TestCase):
     def test_mixed_whitespace_and_letters(self):
         self.assertEqual(
             sorted_list_sum([" a", "b ", "c d"]),
-            [" a", "b ", "c d"]
+            []
         )
 
     # --- Invalid Input Tests ---

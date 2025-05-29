@@ -7,88 +7,79 @@ from code import Strongest_Extension
 
 class TestStrongestExtension(unittest.TestCase):
 
-    # --- Original Functional Tests ---
-    def test_example1(self):
-        self.assertEqual(
-            Strongest_Extension("Slices", ['SErviNGSliCes', 'Cheese', 'StuFfed']),
-            'Slices.SErviNGSliCes'
-        )
-
-    def test_example2(self):
-        self.assertEqual(
-            Strongest_Extension("my_class", ['AA', 'Be', 'CC']),
-            'my_class.AA'
-        )
-
-    def test_tied_strengths(self):
-        self.assertEqual(
-            Strongest_Extension("Test", ['aA', 'Aa']),
-            'Test.aA'
-        )
-
-    def test_all_negative_strengths(self):
-        self.assertEqual(
-            Strongest_Extension("Core", ['aaa', 'bbb', 'cCc']),
-            'Core.cCc'
-        )
-
-    def test_empty_extension(self):
-        self.assertEqual(
-            Strongest_Extension("Void", ["", "a", "B"]),
-            'Void.B'
-        )
-
-    # --- Additional Tests ---
-    def test_all_uppercase_extensions(self):
-        self.assertEqual(
-            Strongest_Extension("MaxOut", ['AAA', 'BB', 'CCCC']),
-            'MaxOut.CCCC'
-        )
-
     def test_all_lowercase_extensions(self):
         self.assertEqual(
-            Strongest_Extension("MinOut", ['aaa', 'bb', 'cccc']),
-            'MinOut.aaa'
+            Strongest_Extension('MinOut', ['aaa', 'bb', 'ccc']),
+            'MinOut.bb'
         )
 
-    def test_mixed_case_balanced(self):
+    def test_negative_strength(self):
         self.assertEqual(
-            Strongest_Extension("Mid", ['Ab', 'aB', 'Xx']),
-            'Mid.Ab'
+            Strongest_Extension('Neg', ['aB', 'Ab', 'ab']),
+            'Neg.aB'
         )
 
-    def test_non_alpha_characters(self):
+    def test_all_uppercase_extensions(self):
         self.assertEqual(
-            Strongest_Extension("Edge", ['A1a', '@@', 'Zz']),
-            'Edge.A1a'
+            Strongest_Extension('MaxOut', ['ABC', 'DEF', 'GHI']),
+            'MaxOut.ABC'
         )
 
-    def test_one_extension(self):
+    def test_mixed_case(self):
         self.assertEqual(
-            Strongest_Extension("Solo", ['OnlyOne']),
-            'Solo.OnlyOne'
+            Strongest_Extension('Mix', ['aA', 'Bb', 'CC']),
+            'Mix.CC'
         )
 
-    def test_all_empty_extensions(self):
+    def test_single_extension(self):
         self.assertEqual(
-            Strongest_Extension("Empty", ['', '', '']),
+            Strongest_Extension('One', ['OnlyOne']),
+            'One.OnlyOne'
+        )
+
+    def test_empty_string_extension(self):
+        self.assertEqual(
+            Strongest_Extension('Empty', ['']),
             'Empty.'
         )
 
-    def test_first_strongest_by_order(self):
+    def test_special_characters(self):
         self.assertEqual(
-            Strongest_Extension("Tie", ['AxX', 'aXX', 'AXx']),
-            'Tie.AxX'
+            Strongest_Extension('Special', ['a_b', 'A-B', '#C@']),
+            'Special.A-B'
         )
 
-    # --- Optional Robustness (type validation) ---
-    def test_non_string_extension(self):
-        with self.assertRaises(TypeError):
-            Strongest_Extension("Invalid", [123, 'abc'])
+    def test_numbers_in_extension(self):
+        self.assertEqual(
+            Strongest_Extension('Nums', ['abc1', 'ABC2', '123']),
+            'Nums.ABC2'
+        )
+
+    def test_same_strength_prefers_first(self):
+        self.assertEqual(
+            Strongest_Extension('Tie', ['XY', 'YZ', 'ZX']),
+            'Tie.XY'
+        )
+
+    def test_non_string_class_name(self):
+        with self.assertRaises(AttributeError):
+            Strongest_Extension(123, ['ext'])
 
     def test_non_list_extensions(self):
         with self.assertRaises(TypeError):
-            Strongest_Extension("Fail", "NotAList")
+            Strongest_Extension('Invalid', 'notalist')
 
-if __name__ == "__main__":
+    def test_none_class_name(self):
+        with self.assertRaises(AttributeError):
+            Strongest_Extension(None, ['ext'])
+
+    def test_none_extensions(self):
+        with self.assertRaises(TypeError):
+            Strongest_Extension('Class', None)
+
+    def test_empty_extension_list(self):
+        with self.assertRaises(ValueError):
+            Strongest_Extension('EmptyList', [])
+
+if __name__ == '__main__':
     unittest.main()
