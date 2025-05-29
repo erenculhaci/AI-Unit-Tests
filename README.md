@@ -48,6 +48,7 @@ Each folder includes generated code and tests based on the same prompt utilizing
 ## Technologies Used
 
 - **Python**
+- **coverage** - Calculates the statement coverage of the tests on related codes. (you need to install this if you want to use coverage generation scripts)
 - **unittest** — Python's built-in unit testing framework used for writing all test cases.
 - **AI Models Used**:
   - [OpenAI GPT-4 Turbo](https://platform.openai.com/)
@@ -99,6 +100,11 @@ You will see the output from `unittest`, displaying passed/failed tests.
 ---
 
 ## Generate Coverages
+
+Install the needed libraries first.
+```bash
+pip install coverage
+```
 
 1. You can generate coverage results for all prompts using the scripts:
 - `generate_coverage_after_modifications`,
