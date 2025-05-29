@@ -1,27 +1,38 @@
-def decimal_to_binary(n):
+def get_closest_vowel(word):
     """
-    Converts a non-negative integer to its binary representation wrapped in "db" format.
+    Returns the rightmost vowel in a word that is surrounded by consonants on both sides.
 
     Args:
-        n: A non-negative integer to convert to binary
+        word (str): The input word to analyze
 
     Returns:
-        str: Binary representation in format "db<binary>db"
+        str: The rightmost surrounded vowel (case preserved), or "" if no such vowel exists
 
     Raises:
-        TypeError: If input is not an integer
-        ValueError: If input is a negative integer
+        TypeError: If the input is not a string
     """
-    # Check if input is an integer
-    if not isinstance(n, int) or isinstance(n, bool):
-        raise TypeError("Input must be an integer")
+    # Check if input is a string
+    if not isinstance(word, str):
+        raise TypeError("Input must be a string")
 
-    # Check if input is non-negative
-    if n < 0:
-        raise ValueError("Input must be a non-negative integer")
+    # Handle empty string or strings with length < 3
+    if len(word) < 3:
+        return ""
 
-    # Convert to binary (remove '0b' prefix from bin() function)
-    binary_representation = bin(n)[2:]
+    # Define vowels (both lowercase and uppercase)
+    vowels = set('aeiouAEIOU')
 
-    # Wrap with "db" at both ends
-    return f"db{binary_representation}db"
+    # Iterate from right to left to find the rightmost surrounded vowel
+    for i in range(len(word) - 2, 0, -1):  # Start from second-to-last char, go to second char
+        current_char = word[i]
+        left_char = word[i - 1]
+        right_char = word[i + 1]
+
+        # Check if current character is a vowel and surrounded by consonants
+        if (current_char in vowels and
+                left_char not in vowels and
+                right_char not in vowels):
+            return current_char
+
+    # No surrounded vowel found
+    return ""
