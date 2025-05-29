@@ -155,7 +155,6 @@ def maximum(arr, k):
     """
 
 
-
 def even_odd_palindrome(n):
     """
     Given a non-negative integer `n`, return a tuple `(even_count, odd_count)` representing the number of
@@ -431,4 +430,238 @@ def find_zero(coeffs: list):
     - Do not return complex roots even if they exist.
     - The function should be able to handle large and small magnitude coefficients correctly.
     - The function should raise correct exceptions when invalid input is given.
+    """
+
+
+def sorted_list_sum(lst):
+    """
+    You are given a list of elements. You will implement a function called `sorted_list_sum(lst)` that returns a sorted list of only the strings with even lengths.
+
+    The function must:
+    - Accept a list as input.
+    - Raise a TypeError if the input is not a list.
+    - Raise a TypeError if any element of the list is not a string.
+
+    The returned list should:
+    - Include only the strings whose lengths are even (e.g., 2, 4, 6, ...).
+    - Be sorted first by length in ascending order, and then alphabetically for strings of the same length.
+
+    Examples:
+    sorted_list_sum(["ab", "a", "abc", "abcd"]) => ["ab", "abcd"]
+    sorted_list_sum(["cd", "ab", "ef", "xy"])   => ["ab", "cd", "ef", "xy"]
+    sorted_list_sum(["a", "abc", "abcde"])     => []
+
+    Ensure strict input type validation for both the list and its elements.
+    """
+
+
+def strongest_extension(class_name, extensions):
+    """
+    You are given a class name and a list of extension names. You must implement a function called `Strongest_Extension(class_name, extensions)` that returns a string in the following format:
+
+    <class_name>.<strongest_extension>
+
+    The strongest extension is determined by the "strength" of each extension, where:
+    - Each uppercase letter contributes +1,
+    - Each lowercase letter contributes -1,
+    - Digits, symbols, or non-alphabetic characters contribute 0.
+
+    The extension with the highest total strength is selected. If there is a tie (same strength), return the extension that appears first in the list.
+
+    Constraints:
+    - `class_name` must be a string. If not, raise an AttributeError.
+    - `extensions` must be a list of strings. If not, raise a TypeError.
+    - If the list `extensions` is empty, raise a ValueError.
+
+    Example:
+    Strongest_Extension("my_class", ["AA", "Be", "CC"])
+    # Returns: "my_class.AA"
+
+    Explanation:
+    - "AA" has strength +2
+    - "Be" has strength 0
+    - "CC" also has strength +2
+    - Since "AA" and "CC" are tied, "AA" is chosen as it appears first.
+    """
+
+
+def solve(n: int) -> str:
+    """
+    Write a function `solve(n)` that takes a single integer input `n` and returns a string representing the binary form of the sum of its digits.
+
+    Function Signature:
+    def solve(n: int) -> str
+
+    Input:
+    - A single integer `n` where:
+        - 0 <= n <= 10000
+
+    Output:
+    - Return the binary representation (as a string) of the sum of the digits of `n`.
+
+    Constraints:
+    - If the input is not an integer, raise a TypeError with the message "Input must be an integer."
+    - If the input is less than 0 or greater than 10000, raise a ValueError with the message "Input must be between 0 and 10000 inclusive."
+
+    Examples:
+    - solve(123)   => "110"     # 1+2+3 = 6 → binary: 110
+    - solve(9999)  => "100100"  # 9+9+9+9 = 36 → binary: 100100
+    - solve(0)     => "0"       # sum = 0 → binary: 0
+    - solve(1000)  => "1"       # 1+0+0+0 = 1 → binary: 1
+    """
+
+
+def valid_date(date_str):
+    """
+    You must implement a function called `valid_date(date_str)` that returns True if the input string is a valid date in the format
+    MM-DD-YYYY, and False otherwise.
+
+    Rules:
+    - The string must be in the exact format MM-DD-YYYY,
+    - MM must be between 01 and 12,
+    - DD must be a valid day for the given month, accounting for leap years,
+    - YYYY must be between 0001 and 9999,
+    - Separators must be hyphens only; other formats like slashes or dots are invalid,
+    - The input must not contain letters, whitespace, or extra symbols.
+
+    Exceptions:
+    - If the input is not a string, the function must raise an AttributeError.
+    """
+
+
+def is_palindrome(s):
+    """
+    You must implement a function:
+    def is_palindrome(s):
+
+    Rules:
+    - The function returns True if the input string is a palindrome.
+    - The comparison must be case-sensitive.
+    - All characters must be preserved and considered as-is (e.g., punctuation, whitespace, symbols).
+    - Raise TypeError for any input that is not a string.
+    """
+
+
+def reverse_delete(s, c):
+    """
+    You will implement a function named `reverse_delete(s, c)` that:
+    - Removes all characters from string s that are present in string c,
+    - Returns a tuple (new_string, is_palindrome),
+    - Where is_palindrome is True if the remaining string is a palindrome.
+
+    Note: Both deletion and palindrome checks are case-sensitive.
+    """
+
+
+def get_closest_vowel(word):
+    """
+    You will implement a function called `get_closest_vowel(word)` that returns the rightmost vowel in a word that is surrounded
+    by consonants on both sides (i.e., the characters directly before and after the vowel must not be vowels).
+
+    The function must:
+    - Return the rightmost surrounded vowel (case preserved),
+    - Return "" if no such vowel exists,
+    - Raise TypeError if the input is not a string.
+
+    Vowels are defined as: a, e, i, o, u (both uppercase and lowercase).
+    """
+
+
+def decimal_to_binary(n):
+    """
+    You are to implement a function named `decimal_to_binary(n)` that takes a non-negative integer and returns its binary
+    representation wrapped in the string format "db<binary>db".
+
+    Requirements:
+    - Input must be a non-negative integer.
+    - Raise a TypeError for non-integer inputs.
+    - Raise a ValueError for negative integers.
+    - The binary output should include only 0s and 1s and must be wrapped with "db" at both ends.
+
+    Args:
+    - n (int): A non-negative integer to convert.
+
+    Returns:
+    - str: A string of the form "db<binary_digits>db" representing the binary form of the input.
+
+    Examples:
+    - decimal_to_binary(0) => "db0db"
+    - decimal_to_binary(5) => "db101db"
+    - decimal_to_binary(255) => "db11111111db"
+
+    Raises:
+    - TypeError: If the input is not an integer.
+    - ValueError: If the input is negative.
+
+    Notes:
+    - The binary conversion must preserve all binary digits exactly.
+    - The output must include "db" at both the beginning and the end.
+    - Invalid types such as float, string, list, etc., should raise an error.
+    """
+
+
+def intersection(interval1, interval2):
+    """
+    You are to implement a function called `intersection(interval1, interval2)` that determines whether two intervals intersect,
+    and if they do, whether the length of the overlapping part is a prime number.
+
+    Each interval is represented as a tuple of two integers (start, end). The function must work regardless of the input order
+    (e.g., (5, 1) is the same as (1, 5)).
+
+    Return:
+    - "YES" if the intervals overlap and the overlap length is a prime number.
+    - "NO" otherwise.
+
+    Input Validation:
+    - Raise TypeError if the input is not a tuple.
+    - Raise ValueError if the tuple does not have exactly 2 elements.
+    - Raise TypeError if any element of the tuple is not an integer.
+
+    Args:
+    - interval1 (Tuple[int, int]): First interval (start, end).
+    - interval2 (Tuple[int, int]): Second interval (start, end).
+
+    Returns:
+    - str: "YES" or "NO" based on the intersection and prime overlap length.
+
+    Examples:
+    - intersection((1, 5), (3, 7)) => "YES"  (overlap is [3, 4, 5], length 3 which is prime)
+    - intersection((0, 2), (3, 5)) => "NO"   (no overlap)
+    - intersection((2, 2), (2, 2)) => "NO"   (overlap length 1, not prime)
+    - intersection((5, 1), (0, 3)) => "NO"   (normalized to (1,5) and (0,3); overlap [1,2], length 2 → prime → "YES")
+
+    Notes:
+    - Input order does not matter. Normalize intervals internally.
+    - Use standard methods to check for primality of overlap length.
+    - Intervals include both start and end values (closed intervals).
+    """
+
+
+def words_in_sentence(sentence):
+    """
+    You are given a sentence containing words separated by spaces. You will implement a function called `words_in_sentence(sentence)` that returns a string containing only the words that have a prime number of characters.
+
+    The output words must:
+    - Be preserved in their original order from the input sentence,
+    - Contain only alphabetic characters (skip any with digits or punctuation),
+    - Be selected only if their length is a prime number,
+    - Ignore any leading, trailing, or extra whitespace between words.
+
+    Input validation:
+    - Accept only string input,
+    - Raise a TypeError for any non-string input.
+
+    Returns:
+    - A space-separated string of valid words meeting the criteria above.
+
+    Examples:
+    - words_in_sentence("this is an example!") => "this is"
+    - words_in_sentence("  prime   digits123   okay ") => "prime okay"
+    - words_in_sentence(12345) => raises TypeError
+    - words_in_sentence("1two three4") => ""
+
+    Notes:
+    - The function should not modify words that pass validation,
+    - Use built-in `str.isalpha()` for alphabetic filtering,
+    - Consider 2, 3, 5, 7, 11, etc. as prime lengths.
     """
