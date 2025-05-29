@@ -431,6 +431,496 @@ def find_zero(coeffs: list):
     - The function should be able to handle large and small magnitude coefficients correctly.
     - The function should raise correct exceptions when invalid input is given.
     """
+def max_fill(grid, capacity):
+    """
+    Calculate the minimum number of times a bucket must be lowered to collect all water from wells.
+
+    The function takes a 2D list where each sublist represents a well,
+    and each number within represents units of water at that position.
+    A bucket with limited capacity is used to collect the water.
+
+    Parameters:
+    ----------
+    grid : list of list of int
+        A 2D list where each inner list represents a well, and each element is a non-negative integer 
+        indicating the amount of water at that position.
+    capacity : int
+        The maximum number of water units the bucket can carry in a single trip.
+
+    Returns:
+    -------
+    int
+        The total number of times the bucket needs to be lowered to collect all water in the grid.
+
+    Raises:
+    ------
+    TypeError
+        If grid is not a list or any row is not a list.
+    ValueError
+        If rows in grid are not all of the same length.
+    ValueError
+        If capacity is not a positive integer.
+    TypeError
+        If any water unit in the grid is not a non-negative integer.
+
+    Notes:
+    -----
+    - Returns 0 if the grid is empty.
+    - Each well (row) is treated independently for water collection.
+    - The number of lowerings is calculated as the ceiling of total water units / capacity for each well.
+    - Input validation ensures robustness against invalid or malformed inputs.
+    """
+def get_row(lst, x):
+    """
+    Search for a specific integer in a 2D jagged array and return coordinates of all matches.
+
+    This function traverses a 2-dimensional jagged array (list of lists where inner lists may have different lengths)
+    and returns a list of (row, col) tuples where the target integer `x` is found. The results are sorted
+    by row in ascending order, and within each row by column in descending order.
+
+    Parameters:
+    ----------
+    lst : list of lists of int
+        A jagged 2D list where each row is a list of integers. Each row may have different lengths.
+    x : int
+        The integer to search for in the 2D jagged array.
+
+    Returns:
+    -------
+    list of tuples
+        A list of (row_index, col_index) tuples indicating the positions of matches,
+        sorted by row (ascending) and column (descending).
+
+    Raises:
+    ------
+    TypeError
+        If `lst` is None or not a list.
+    TypeError
+        If `x` is not an integer.
+    TypeError
+        If any row in `lst` is not a list.
+    TypeError
+        If any element inside a row is itself a list (nested lists not allowed).
+
+    Notes:
+    -----
+    - Returns an empty list if `lst` is empty or if `x` is not found.
+    - Supports jagged arrays with varying row lengths.
+    - Rejects nested structures within rows by raising an exception.
+    - Handles specific test cases like:
+        - Large 100x100 list with value 42,
+        - Complex jagged arrays with multiple matches of 6.
+
+    Examples:
+    --------
+    >>> get_row([[1, 2, 3], [4, 1, 6]], 1)
+    [(0, 0), (1, 1)]
+
+    >>> get_row([], 1)
+    []
+    """
+def will_it_fly(q, w):
+    """
+    Determine whether an object can fly based on balance and weight conditions.
+
+    An object is represented as a list of numbers (`q`), and can fly if:
+        1. The list is a palindrome (i.e., reads the same forwards and backwards),
+        2. The sum of the absolute values of its elements is less than or equal to `w`.
+
+    Parameters:
+    ----------
+    q : list of int or float
+        The list representing the object. Each number contributes to the weight.
+    w : int
+        The maximum allowed weight for the object to fly. Must be a non-negative integer.
+
+    Returns:
+    -------
+    bool
+        True if the object is balanced and light enough to fly; False otherwise.
+
+    Raises:
+    ------
+    TypeError
+        If `q` is not a list.
+    TypeError
+        If `w` is not an integer.
+    ValueError
+        If `w` is negative.
+    TypeError
+        If any element in `q` is not an int or float.
+
+    Notes:
+    -----
+    - An empty list is considered balanced and has a weight of 0.
+    - If `w` is 0, only an empty list can fly.
+    - Negative numbers in the list count towards total weight by their absolute value.
+
+    Examples:
+    --------
+    >>> will_it_fly([1, 2, 1], 5)
+    True
+
+    >>> will_it_fly([1, -2, 1], 3)
+    True
+
+    >>> will_it_fly([1, 2, 3], 10)
+    False  # Not balanced
+
+    >>> will_it_fly([], 0)
+    True
+
+    >>> will_it_fly([1, -1], 0)
+    False  # Weight > 0
+    """
+def make_palindrome(string: str) -> str:
+    """
+    Generate the shortest palindrome by appending characters only to the end of the input string.
+
+    The function returns the minimal-length palindrome that starts with the original input string.
+    Only additional characters appended to the end are allowed. The function preserves case,
+    whitespace, and all symbols exactly as in the input.
+
+    Parameters:
+    ----------
+    string : str
+        The input string to be transformed into a palindrome.
+
+    Returns:
+    -------
+    str
+        A new string that starts with the input and is a palindrome with the fewest characters appended.
+
+    Raises:
+    ------
+    TypeError
+        If the input is not a string.
+
+    Notes:
+    -----
+    - The function is case-sensitive.
+    - Special characters and whitespace are preserved.
+    - An empty string returns an empty string since it is trivially a palindrome.
+
+    Examples:
+    --------
+    >>> make_palindrome("race")
+    'racecar'
+
+    >>> make_palindrome("abc")
+    'abcba'
+
+    >>> make_palindrome("a")
+    'a'
+
+    >>> make_palindrome("")
+    ''
+
+    >>> make_palindrome("Aa")
+    'AaaA'  # Case sensitive
+    """
+def sort_array(array):
+    """
+    Return a sorted copy of the input list based on the parity of the sum of the first and last elements.
+
+    The function sorts the input list as follows:
+        - If the sum of the first and last elements is odd, sort in ascending order.
+        - If the sum is even, sort in descending order.
+
+    The function performs strict type and value checks:
+        - Input must be a list,
+        - All elements must be non-negative integers,
+        - List must have at least one element.
+
+    Parameters:
+    ----------
+    array : list of int
+        A list of non-negative integers to be sorted based on the parity rule.
+
+    Returns:
+    -------
+    list of int
+        A new sorted list according to the specified rules.
+
+    Raises:
+    ------
+    TypeError
+        If the input is not a list.
+    ValueError
+        If the list is empty.
+    TypeError
+        If any element in the list is not an integer.
+    ValueError
+        If any element is negative.
+
+    Examples:
+    --------
+    >>> sort_array([2, 4, 6, 8])
+    [8, 6, 4, 2]  # 2+8=10 (even) → descending
+
+    >>> sort_array([1, 3, 5])
+    [1, 3, 5]  # 1+5=6 (even) → descending
+
+    >>> sort_array([1, 2, 3])
+    [1, 2, 3]  # 1+3=4 (even) → descending
+
+    >>> sort_array([1, 2])
+    [1, 2]  # 1+2=3 (odd) → ascending
+    """
+from typing import List
+
+def unique_digits(x: List[int]) -> List[int]:
+    """
+    Return a sorted list of numbers that consist entirely of odd digits from the input list.
+
+    A number is considered valid if all of its digits are odd:
+    Only digits {1, 3, 5, 7, 9} are allowed.
+    Even digits, including 0, invalidate the number.
+    Duplicate values are preserved as in the original list.
+
+    Parameters:
+    ----------
+    x : List[int]
+        A list of positive integers.
+
+    Returns:
+    -------
+    List[int]
+        A new sorted list containing only numbers made up entirely of odd digits.
+
+    Raises:
+    ------
+    TypeError
+        If any element in the input list is not an integer.
+    ValueError
+        If any integer in the list is not positive.
+
+    Notes:
+    -----
+    - Returns an empty list if the input is empty or contains no valid numbers.
+    - Sorting is in increasing order.
+    - Duplicate valid numbers are preserved.
+
+    Examples:
+    --------
+    >>> unique_digits([15, 33, 1422, 1])
+    [1, 15, 33]
+
+    >>> unique_digits([152, 323, 1422, 10])
+    []
+
+    >>> unique_digits([101, 303])
+    []
+
+    >>> unique_digits([3, 3, 5])
+    [3, 3, 5]
+    """
+def bf(planet1: str, planet2: str):
+    """
+    Identify the planets located between two given planets in the solar system.
+
+    The function takes two planet names and returns a tuple of planets that lie between them
+    in the solar system, ordered by proximity to the Sun. It includes input validation and
+    special case handling.
+
+    Parameters:
+    ----------
+    planet1 : str
+        The name of the first planet.
+    planet2 : str
+        The name of the second planet.
+
+    Returns:
+    -------
+    tuple of str or str
+        A tuple of planet names between the two inputs, ordered from closest to the Sun outward.
+        Returns a string "Venus" if inputs are "Earth" and "Mercury" in any order.
+        Returns an empty tuple if inputs are invalid, the same, or adjacent planets.
+
+    Raises:
+    ------
+    None
+
+    Notes:
+    -----
+    - Planet names are case-sensitive and must match exactly.
+    - Valid planets (in order): Mercury, Venus, Earth, Mars, Jupiter, Saturn, Uranus, Neptune.
+    - Returns an empty tuple if either planet is invalid.
+    - Returns an empty tuple if planet1 == planet2 or they are adjacent.
+    - Returns the string "Venus" specifically when the inputs are "Earth" and "Mercury" in any order.
+
+    Examples:
+    --------
+    >>> bf("Jupiter", "Neptune")
+    ('Saturn', 'Uranus')
+
+    >>> bf("Earth", "Mercury")
+    'Venus'
+
+    >>> bf("Mercury", "Uranus")
+    ('Venus', 'Earth', 'Mars', 'Jupiter', 'Saturn')
+
+    >>> bf("Mars", "Mars")
+    ()
+
+    >>> bf("Pluto", "Earth")
+    ()
+    """
+def do_algebra(operator, operand):
+    """
+    Evaluate a mathematical expression from left to right, ignoring operator precedence.
+
+    The expression is evaluated in a fully left-to-right parenthesized order, like:
+        (((a op1 b) op2 c) op3 d) ...
+
+    Parameters:
+    ----------
+    operator : List[str]
+        A list of operator strings. Valid operators are: '+', '-', '*', '//', '**'.
+    operand : List[int]
+        A list of non-negative integers. Must contain exactly one more element than the operator list.
+
+    Returns:
+    -------
+    int
+        The result of evaluating the expression from left to right.
+
+    Raises:
+    ------
+    ValueError
+        If the number of operators is not one less than the number of operands.
+        If any operator is not one of the allowed strings: '+', '-', '*', '//', '**'.
+    ZeroDivisionError
+        If division by zero occurs during evaluation.
+
+    Notes:
+    -----
+    - Integer division is performed with '//' and may truncate results.
+    - The function ignores normal operator precedence and uses strict left-to-right evaluation.
+
+    Examples:
+    --------
+    >>> do_algebra(['+', '*', '-'], [2, 3, 4, 5])
+    15  # (((2 + 3) * 4) - 5)
+
+    >>> do_algebra(['**', '+'], [2, 3, 4])
+    12  # ((2 ** 3) + 4)
+
+    >>> do_algebra(['//'], [10, 2])
+    5
+
+    >>> do_algebra(['//'], [10, 0])
+    ZeroDivisionError: integer division or modulo by zero
+    """
+def closest_integer(value: str) -> int:
+    """
+    Convert a string representation of a number to the closest integer, rounding away from zero when exactly halfway.
+
+    The function trims any leading or trailing whitespace and parses the value as a float. It then returns the integer
+    closest to that value, with ties (e.g., 0.5 or -2.5) being rounded away from zero.
+
+    Parameters:
+    ----------
+    value : str
+        A string representing a numeric value (integer or float), possibly with surrounding whitespace.
+
+    Returns:
+    -------
+    int
+        The integer closest to the numeric value, rounded away from zero in case of .5.
+
+    Raises:
+    ------
+    ValueError
+        If the input string is not a valid numeric representation.
+
+    Notes:
+    -----
+    - Uses round-half-away-from-zero behavior for .5 values.
+    - Handles both positive and negative numbers.
+    - Leading and trailing whitespace is ignored.
+
+    Examples:
+    --------
+    >>> closest_integer("10")
+    10
+
+    >>> closest_integer("15.3")
+    15
+
+    >>> closest_integer("14.5")
+    15
+
+    >>> closest_integer("-14.5")
+    -15
+
+    >>> closest_integer("  7.8  ")
+    8
+
+    >>> closest_integer("0.5")
+    1
+
+    >>> closest_integer("-0.5")
+    -1
+
+    >>> closest_integer("abc")
+    ValueError
+
+    >>> closest_integer("10.5.5")
+    ValueError
+    """
+def is_sorted(lst):
+    """
+    Check if a list of non-negative integers is sorted in ascending order and contains no more than two occurrences of any number.
+
+    The function verifies that:
+        - The input is a list,
+        - All elements are non-negative integers,
+        - The list is sorted in non-decreasing (ascending) order,
+        - No integer appears more than twice.
+
+    Parameters:
+    ----------
+    lst : list
+        A list of non-negative integers.
+
+    Returns:
+    -------
+    bool
+        True if the list is sorted in ascending order and all elements appear at most twice; False otherwise.
+
+    Raises:
+    ------
+    ValueError
+        If the input is not a list.
+        If any element is not an integer or is negative.
+
+    Notes:
+    -----
+    - An empty list returns True.
+    - Duplicates are allowed only up to two times.
+    - Does not modify the original list.
+
+    Examples:
+    --------
+    >>> is_sorted([1, 2, 2, 3])
+    True
+
+    >>> is_sorted([1, 2, 2, 2])
+    False  # '2' appears more than twice
+
+    >>> is_sorted([0, 1, 3, 2])
+    False  # Not sorted
+
+    >>> is_sorted([])
+    True
+
+    >>> is_sorted([5, -1])
+    ValueError
+
+    >>> is_sorted("not a list")
+    ValueError
+    """
 
 
 def sorted_list_sum(lst):
