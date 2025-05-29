@@ -1,3 +1,11 @@
+![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)
+![Unittest](https://img.shields.io/badge/unittest-OK-blue?style=for-the-badge)
+![MIT License](https://img.shields.io/badge/License-MIT-yellow?style=for-the-badge)
+![OpenAI GPT-4 Turbo](https://img.shields.io/badge/OpenAI-GPT--4--Turbo-blueviolet?style=for-the-badge&logo=openai&logoColor=white)
+![Claude 3.7 Sonnet](https://img.shields.io/badge/Claude-3.7%20Sonnet-orange?style=for-the-badge)
+![Coverage 100%](https://img.shields.io/badge/Coverage-100%25-brightgreen?style=for-the-badge)
+
+
 # AI Code Generation and Testing
 
 This repository includes generated Python code and corresponding unit tests for 30 different coding prompts selected from the **HumanEval** dataset as well as the integrated tests, codes and coverage analysis scripts.
